@@ -1,5 +1,7 @@
 import "~/styles/globals.css";
 
+import Link from "next/link";
+
 import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
@@ -15,7 +17,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+        <nav
+          aria-label="main"
+          className="flex w-auto justify-center gap-4 justify-self-start p-4"
+        >
+          <Link className="button" href="/input">
+            Input
+          </Link>
+          <Link href="/drag-drop"> Drag & Drop</Link>
+        </nav>
+
+        <h1 className="text-5xl font-extrabold tracking-tight text-white ">
+          File input demo
+        </h1>
+
+        {children}
+      </body>
     </html>
   );
 }
