@@ -33,11 +33,10 @@ export default function RootLayout({
             </Link>
           </Button>
           <Button asChild>
-            <Link href="/drag-drop"> Drag & Drop</Link>
+            <Link href="/drag-drop">Drag & Drop</Link>
           </Button>
         </nav>
-
-        {children}
+        <main className="w-1/3">{children}</main>
       </body>
     </html>
   );

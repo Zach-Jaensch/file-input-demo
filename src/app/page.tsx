@@ -1,45 +1,45 @@
+import { UList } from "~/components/ui/list";
+
 export default function HomePage() {
   return (
-    <main>
-      <div className="container flex flex-col items-center justify-center gap-12 p-4 ">
-        <ul>
-          <li>file</li>
+    <div className="container flex flex-col items-center justify-center gap-12 p-4">
+      <UList>
+        <li>file</li>
 
-          <li>
-            folder
-            <ul className="pl-4">
-              <li>&#x21b3; file</li>
-              <li>
-                &#x21b3; folder
-                <ul className="pl-4">
-                  <li>&#x21b3; file</li>
-                  <li>&#x21b3; file</li>
-                </ul>
-              </li>
-              <li>
-                &#x21b3; folder
-                <ul className="pl-4">
-                  <li>&#x21b3; file</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+        <li>
+          folder
+          <UList>
+            <li>&#10551; file</li>
+            <li>
+              &#10551; folder
+              <UList>
+                <li>&#10551; file</li>
+                <li>&#10551; file</li>
+              </UList>
+            </li>
+            <li>
+              &#10551; folder
+              <UList>
+                <li>&#10551; file</li>
+              </UList>
+            </li>
+          </UList>
+        </li>
 
-          <li>
-            folder
-            <ul className="pl-4">
-              <li>&#x21b3; file</li>
-              <li>
-                &#x21b3; folder
-                <ul className="pl-4">
-                  <li>&#x21b3; file</li>
-                  <li>&#x21b3; file</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </main>
+        <li>
+          folder
+          <UList>
+            <li>&#10551; file</li>
+            <li>
+              &#10551; folder
+              <UList>
+                <li>&#10551; file</li>
+                <li>&#10551; file</li>
+              </UList>
+            </li>
+          </UList>
+        </li>
+      </UList>
+    </div>
   );
 }
