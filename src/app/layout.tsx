@@ -3,6 +3,7 @@ import "~/styles/globals.css";
 import Link from "next/link";
 
 import { GeistSans } from "geist/font/sans";
+import { Button } from "~/components/ui/button";
 
 export const metadata = {
   title: "Create T3 App",
@@ -17,20 +18,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+      <body className="flex min-h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] p-8 text-white">
+        <h1 className="text-5xl font-extrabold tracking-tight text-white ">
+          File input demo
+        </h1>
+
         <nav
           aria-label="main"
           className="flex w-auto justify-center gap-4 justify-self-start p-4"
         >
-          <Link className="button" href="/input">
-            Input
-          </Link>
-          <Link href="/drag-drop"> Drag & Drop</Link>
+          <Button asChild>
+            <Link className="button" href="/input">
+              Input
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link href="/drag-drop"> Drag & Drop</Link>
+          </Button>
         </nav>
-
-        <h1 className="text-5xl font-extrabold tracking-tight text-white ">
-          File input demo
-        </h1>
 
         {children}
       </body>
