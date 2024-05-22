@@ -1,0 +1,1 @@
+import "wicg-entries-api";

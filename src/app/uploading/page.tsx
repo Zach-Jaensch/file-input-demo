@@ -11,13 +11,16 @@ export default function HomePage() {
       <Input type="file" onChange={(e) => setFiles(e.target.files)} />
       <UList className="pt-4">
         {files &&
-          Array.from(files).map((file) => <li key={file.name}>{file.name}</li>)}
+          Array.from(files).map((file) => (
+            <li key={file.webkitRelativePath || file.name}>
+              {file.webkitRelativePath || file.name}
+            </li>
+          ))}
       </UList>
     </div>
   );
 }
 
-// multiple
 // webkitdirectory=""
 
 // file.name

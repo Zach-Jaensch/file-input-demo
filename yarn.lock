@@ -287,6 +287,11 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/wicg-entries-api@^2020.8.5":
+  version "2020.8.5"
+  resolved "https://registry.yarnpkg.com/@types/wicg-entries-api/-/wicg-entries-api-2020.8.5.tgz#e651556cf6fde847aa4fd286f7f50cc4fe21a27d"
+  integrity sha512-HXp6ze0+M/59IbCIZGsb3A4W/08eJJBAVUGIjk7XcF3aX/khd8x4YZnZgoRK2LNTBk5X1WVbYSc4yx0QymkIIg==
+
 "@typescript-eslint/eslint-plugin@^7.1.1":
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-7.10.0.tgz#07854a236f107bb45cbf4f62b89474cbea617f50"
