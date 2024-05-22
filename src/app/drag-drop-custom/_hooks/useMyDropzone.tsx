@@ -75,9 +75,9 @@ async function scanEntry(entry: FileSystemEntry): Promise<Folder | File> {
             .finally(resolve);
         });
     });
-    console.log(folder);
+
     return folder;
   }
-  console.log({ name: entry.name });
+
   return { name: entry.name };
 }
