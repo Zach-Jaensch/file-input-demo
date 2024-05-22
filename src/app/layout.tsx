@@ -26,7 +26,7 @@ export default function RootLayout({
           <MainNav />
         </div>
 
-        <main className="w-1/3">{children}</main>
+        <main className="w-1/3 min-w-[40rem]">{children}</main>
       </body>
     </html>
   );

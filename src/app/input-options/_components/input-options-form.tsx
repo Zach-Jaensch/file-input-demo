@@ -20,10 +20,12 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group";
-// import { toast } from "~/components/ui/use-toast"
 
 const FormSchema = z.object({
   type: z.enum(["file", "directory", "both"], {
+    required_error: "You need to select a file selection type.",
+  }),
+  selection: z.enum(["single", "multiple"], {
     required_error: "You need to select a file selection type.",
   }),
   output: z.enum(["name", "webkitRelativePath", "path"], {
@@ -39,6 +41,7 @@ export function InputOptionsForm({ onSubmit }: InputOptionsFormProps) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
+      selection: "single",
       type: "file",
       output: "name",
     },
@@ -48,11 +51,39 @@ export function InputOptionsForm({ onSubmit }: InputOptionsFormProps) {
     <Card>
       <CardHeader>Setup your input</CardHeader>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6"
-        >
-          <CardContent className="grid w-full grid-cols-2 gap-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+          <CardContent className="grid w-full grid-cols-3 gap-4">
+            <FormField
+              control={form.control}
+              name="selection"
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <FormLabel>How many items do you want to select?</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="single" />
+                        </FormControl>
+                        <FormLabel className="font-normal">One</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="multiple" />
+                        </FormControl>
+                        <FormLabel className="font-normal">Many</FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="type"
@@ -119,7 +150,9 @@ export function InputOptionsForm({ onSubmit }: InputOptionsFormProps) {
                         <FormControl>
                           <RadioGroupItem value="path" />
                         </FormControl>
-                        <FormLabel className="font-normal">file.path</FormLabel>
+                        <FormLabel className="font-normal">
+                          file.path ???
+                        </FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>

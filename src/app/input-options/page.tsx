@@ -8,18 +8,12 @@ import { InputOptionsForm } from "./_components/input-options-form";
 interface InputOptions {
   type?: "file" | "directory" | "both";
   output?: "name" | "webkitRelativePath" | "path";
+  selection?: "single" | "multiple";
 }
 
 export default function HomePage() {
   const [files, setFiles] = useState<FileList | null>(null);
   const [inputOptions, setInputOptions] = useState<InputOptions>({});
-
-  function inputType() {
-    if (inputOptions.type === "directory") {
-      return { webkitdirectory: "" };
-    }
-    return {};
-  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -27,7 +21,9 @@ export default function HomePage() {
       <Input
         type="file"
         onChange={(e) => setFiles(e.target.files)}
-        {...inputType()}
+        // @ts-ignore https://github.com/facebook/react/issues/3468 😢
+        webkitdirectory={inputOptions.type === "directory" ? "" : undefined}
+        multiple={inputOptions.selection === "multiple"}
       />
       <UList>
         {files &&
