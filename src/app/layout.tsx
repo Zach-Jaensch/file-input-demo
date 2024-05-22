@@ -1,9 +1,7 @@
 import "~/styles/globals.css";
 
-import Link from "next/link";
-
 import { GeistSans } from "geist/font/sans";
-import { Button } from "~/components/ui/button";
+
 import { MainNav } from "./_components/main-nav";
 
 export const metadata = {
