@@ -30,9 +30,13 @@ export function useMyDropzone(
       Promise.all(
         Array.from(items).map(async (item) => {
           // https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem/webkitGetAsEntry
-          rootFolder.concat(await scanEntry(item.webkitGetAsEntry()!));
+          rootFolder.push(await scanEntry(item.webkitGetAsEntry()!));
         }),
-      ).catch(console.error);
+      )
+        .catch(console.error)
+        .finally(() => {
+          setFileSystem(rootFolder);
+        });
     }
 
     droparea.addEventListener("drop", handleDrop);
@@ -64,16 +68,16 @@ async function scanEntry(entry: FileSystemEntry): Promise<Folder | File> {
         .readEntries((entries) => {
           Promise.all(
             entries.map(async (subEntry) => {
-              folder.items.concat(await scanEntry(subEntry));
+              folder.items.push(await scanEntry(subEntry));
             }),
           )
             .catch(console.error)
             .finally(resolve);
         });
     });
-
+    console.log(folder);
     return folder;
   }
-
+  console.log({ name: entry.name });
   return { name: entry.name };
 }
