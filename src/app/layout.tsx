@@ -1,6 +1,7 @@
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/react";
 
 import { MainNav } from "./_components/main-nav";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         </div>
 
         <main className="w-1/3 min-w-[40rem]">{children}</main>
+        <Analytics />
       </body>
     </html>
   );
