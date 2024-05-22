@@ -8,7 +8,6 @@ import { Card, CardHeader } from "~/components/ui/card";
 import { type Folder, type File } from "./_types/common";
 import { Entry } from "./_components/entry";
 import { useMyDropzone } from "./_hooks/useMyDropzone";
-import { LocalNav } from "./_components/local-nav";
 
 export default function HomePage() {
   const [fileSystem, setFileSystem] = useState<(Folder | File)[]>([]);
@@ -17,8 +16,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <LocalNav />
-
       <Card className="text-center" ref={dropareaRef}>
         <CardHeader>
           <h2>My dropzone</h2>

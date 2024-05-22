@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { GeistSans } from "geist/font/sans";
 import { Button } from "~/components/ui/button";
+import { MainNav } from "./_components/main-nav";
 
 export const metadata = {
   title: "File input demo",
@@ -23,27 +24,10 @@ export default function RootLayout({
           File input demo
         </h1>
 
-        <nav
-          aria-label="main"
-          className="flex w-auto justify-center gap-4 justify-self-start p-4"
-        >
-          <Button asChild>
-            <Link className="button" href="/">
-              &#9750;
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link className="button" href="/input">
-              Input
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link href="/drag-drop">Drag & Drop</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/uploading">Uploading</Link>
-          </Button>
-        </nav>
+        <div className=" p-4">
+          <MainNav />
+        </div>
+
         <main className="w-1/3">{children}</main>
       </body>
     </html>

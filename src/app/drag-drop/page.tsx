@@ -6,7 +6,6 @@ import { UList } from "~/components/ui/list";
 
 import { useDropzone, type FileWithPath } from "react-dropzone";
 import { Card, CardHeader } from "~/components/ui/card";
-import { LocalNav } from "./_components/local-nav";
 
 export default function HomePage() {
   const [files, setFiles] = useState<FileWithPath[]>([]);
@@ -21,8 +20,6 @@ export default function HomePage() {
 
   return (
     <div>
-      <LocalNav />
-
       <Card className="text-center" {...getRootProps()}>
         <CardHeader>
           <h2>react-dropzone</h2>
